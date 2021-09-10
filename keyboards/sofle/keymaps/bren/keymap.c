@@ -3,14 +3,12 @@
 enum layers {
     _QWERTY,
     _GAME,
-    _KEYPAD,
     _ARROWS,
     _FN,
     _META,
 };
 
 enum custom_keycodes {
-    KC_KEYPAD = MO(_KEYPAD),
     KC_FN = MO(_FN),
     KC_ARROWS = MO(_ARROWS),
     KC_META = MO(_META),
@@ -19,25 +17,18 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT( \
-      KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_GRV, \
-      KC_LBRACKET,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_RBRACKET, \
-      KC_TAB,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT, \
-      KC_KEYPAD,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,       XXXXXXX,KC_N, KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_BSLASH, \
-                    KC_LALT, KC_LGUI, KC_LCTRL, KC_LSFT, KC_SPC,      KC_ENT,  KC_BSPACE, KC_ARROWS, KC_FN, KC_META \
+      KC_GESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_EQUAL, \
+      KC_LBRACKET,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_MINUS, \
+      KC_RBRACKET,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOTE, \
+      KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,       XXXXXXX,KC_N, KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_BSLASH, \
+                    KC_LALT, KC_LGUI, KC_LCTRL, KC_TAB, KC_SPC,      KC_ENT,  KC_BSPACE, KC_ARROWS, KC_FN, KC_META \
     ),
     [_GAME] = LAYOUT( \
-      KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_GRV, \
+      KC_GESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_GRV, \
       KC_LBRACKET,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_RBRACKET, \
-      KC_TAB,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT, \
-      KC_M,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,       XXXXXXX,KC_N, KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_BSLASH, \
-                    KC_LALT, KC_LGUI, KC_LCTRL, KC_LSFT, KC_SPC,                   KC_ENT, KC_BSPACE, KC_ARROWS, KC_FN, KC_META \
-    ),
-    [_KEYPAD] = LAYOUT( \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MINUS, KC_KP_7, KC_M, KC_KP_9, KC_PLUS, XXXXXXX, \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_UNDERSCORE, KC_KP_4, KC_KP_5, KC_KP_6, KC_EQUAL, XXXXXXX, \
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_KP_0, KC_KP_1, KC_KP_2, KC_KP_3, XXXXXXX, XXXXXXX, \
-      	     _______, _______, _______, _______, _______,                         _______, XXXXXXX, KC_NUMLOCK, XXXXXXX, XXXXXXX \
+      KC_RBRACKET,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOTE, \
+      KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,       XXXXXXX,KC_N, KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_BSLASH, \
+                    KC_LALT, KC_LGUI, KC_LCTRL, KC_TAB, KC_SPC,                   KC_ENT, KC_BSPACE, KC_ARROWS, KC_FN, KC_META \
     ),
     [_ARROWS] = LAYOUT( \
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
@@ -61,6 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______ \
     ),
 };
+
 
 #ifdef RGBLIGHT_ENABLE
 
@@ -99,18 +91,6 @@ const rgblight_segment_t PROGMEM game_lights[] = RGBLIGHT_LAYER_SEGMENTS(
      //{37, 35, COLOR_MAIN}
 );
 
-const rgblight_segment_t PROGMEM keypad_lights[] = RGBLIGHT_LAYER_SEGMENTS(
-     LHS_BACKLIGHT,
-     RHS_BACKLIGHT,
-     {49, 2, COLOR_MAIN},
-     {54, 3, COLOR_MAIN},
-     {59, 3, COLOR_MAIN},
-     {64, 3, COLOR_MAIN},
-     {71, 1, COLOR_MAIN},
-     {53, 1, COLOR_ALT},
-     {8, 1, COLOR_ALT}
-);
-
 const rgblight_segment_t PROGMEM arrow_lights[] = RGBLIGHT_LAYER_SEGMENTS(
      LHS_BACKLIGHT,
      RHS_BACKLIGHT,
@@ -143,7 +123,6 @@ const rgblight_segment_t PROGMEM meta_lights[] = RGBLIGHT_LAYER_SEGMENTS(
 const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     main_lights,
     game_lights,
-    keypad_lights,
     arrow_lights,
     fn_lights,
     meta_lights
@@ -157,10 +136,9 @@ const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
 layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(0, layer_state_cmp(state, _QWERTY));
     rgblight_set_layer_state(1, layer_state_cmp(state, _GAME));
-    rgblight_set_layer_state(2, layer_state_cmp(state, _KEYPAD));
-    rgblight_set_layer_state(3, layer_state_cmp(state, _ARROWS));
-    rgblight_set_layer_state(4, layer_state_cmp(state, _FN));
-    rgblight_set_layer_state(5, layer_state_cmp(state, _META));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _ARROWS));
+    rgblight_set_layer_state(3, layer_state_cmp(state, _FN));
+    rgblight_set_layer_state(4, layer_state_cmp(state, _META));
     return state;
 }
 #endif
