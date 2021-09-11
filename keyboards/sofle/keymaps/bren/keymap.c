@@ -78,7 +78,7 @@ const rgblight_segment_t PROGMEM main_lights[] = RGBLIGHT_LAYER_SEGMENTS(
      LHS_BACKLIGHT,
      RHS_BACKLIGHT,
      {7, 29, COLOR_MAIN},
-     {37, 29, COLOR_MAIN}
+     {43, 29, COLOR_MAIN}
 );
 
 const rgblight_segment_t PROGMEM game_lights[] = RGBLIGHT_LAYER_SEGMENTS(
