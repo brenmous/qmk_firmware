@@ -3,15 +3,13 @@
 enum layers {
     _QWERTY,
     _GAME,
-    _ARROWS,
-    _FN,
-    _META,
+    _NAV,
+    _FN
 };
 
 enum custom_keycodes {
     KC_FN = MO(_FN),
-    KC_ARROWS = MO(_ARROWS),
-    KC_META = MO(_META),
+    KC_NAV = MO(_NAV),
     KC_GAME = TG(_GAME)
 };
 
@@ -21,44 +19,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_MINUS, \
       KC_LBRACKET,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOTE, \
       KC_RBRACKET,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,       XXXXXXX,KC_N, KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_BSLASH, \
-                      KC_LALT, KC_LGUI, KC_LCTRL, KC_LSFT, KC_SPC,      KC_ENT,  KC_BSPACE, KC_ARROWS, KC_FN, KC_META \
+                      KC_LALT, KC_LGUI, KC_LCTRL, KC_LSFT, KC_SPC,      KC_ENT,  KC_BSPACE, KC_NAV, KC_FN, XXXXXXX \
     ),
     [_GAME] = LAYOUT( \
-      KC_GESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_GRV, \
-      KC_TAB,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_RBRACKET, \
+      KC_GESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_EQUAL, \
+      KC_TAB,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_MINUS, \
       KC_LBRACKET,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOTE, \
       KC_RBRACKET,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,       XXXXXXX,KC_N, KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_BSLASH, \
-                    KC_LALT, KC_LGUI, KC_LCTRL, KC_LSFT, KC_SPC,                   KC_ENT, KC_BSPACE, KC_ARROWS, KC_FN, KC_META \
+                    KC_LALT, KC_LGUI, KC_LCTRL, KC_LSFT, KC_SPC,                   KC_ENT, KC_BSPACE, KC_NAV, KC_FN, XXXXXXX \
     ),
-    [_ARROWS] = LAYOUT( \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX, XXXXXXX,\
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-      	     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX \
+    [_NAV] = LAYOUT( \
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGUP, \
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_HOME,                      KC_END, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDOWN,\
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX, KC_INSERT,\
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DELETE, \
+      	     KC_LALT, KC_LGUI, KC_LCTRL, KC_LSFT, KC_SPC,                         KC_ENT, KC_SPACE, _______, XXXXXXX, XXXXXXX \
     ),
     [_FN] = LAYOUT( \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX \
-    ),
-    [_META] = LAYOUT( \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG, \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_GAME, \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, KC_MPRV, KC_MNXT, KC_MPLY, XXXXXXX, \
-            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______ \
-    ),
+      KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                                 KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, \
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,                     XXXXXXX, XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, \
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_GAME,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+      KC_PWR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+              KC_LALT, KC_LGUI, KC_LCTRL, KC_LSFT, KC_SPC,                       KC_ENT, KC_SPACE, _______, XXXXXXX, XXXXXXX \
+    )
 };
 
 
 #ifdef RGBLIGHT_ENABLE
 
-#define COLOR_MAIN 173, 255, 128
-//#define COLOR_ALT 31, 255, 73
-#define COLOR_ALT 11, 176, 255
+#define COLOR_MAIN 173, 255, 128 //midnight blue
+#define COLOR_ALT 11, 176, 255 // coral pink
+#define COLOR_WARN 14, 255, 255 // orange
+#define COLOR_BACKLIGHT 11, 176, 255
 
 extern rgblight_config_t rgblight_config;
 
@@ -72,8 +64,8 @@ extern rgblight_config_t rgblight_config;
 	             Back lights
        , 1, 2, 3, 4, 5, 6, 42, 41, 40, 39, 38, 37 \
 */
-#define LHS_BACKLIGHT {1, 6, COLOR_MAIN}
-#define RHS_BACKLIGHT {37, 6, COLOR_MAIN}
+#define LHS_BACKLIGHT {1, 6, COLOR_BACKLIGHT}
+#define RHS_BACKLIGHT {37, 6, COLOR_BACKLIGHT}
 const rgblight_segment_t PROGMEM main_lights[] = RGBLIGHT_LAYER_SEGMENTS(
      LHS_BACKLIGHT,
      RHS_BACKLIGHT,
@@ -83,18 +75,18 @@ const rgblight_segment_t PROGMEM main_lights[] = RGBLIGHT_LAYER_SEGMENTS(
 
 const rgblight_segment_t PROGMEM game_lights[] = RGBLIGHT_LAYER_SEGMENTS(
      LHS_BACKLIGHT,
-     //RHS_BACKLIGHT,
      {7, 29, COLOR_MAIN},
      {19, 1, COLOR_ALT},
      {23, 2, COLOR_ALT},
      {29, 1, COLOR_ALT}
-     //{37, 35, COLOR_MAIN}
 );
 
-const rgblight_segment_t PROGMEM arrow_lights[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM nav_lights[] = RGBLIGHT_LAYER_SEGMENTS(
      LHS_BACKLIGHT,
      RHS_BACKLIGHT,
-     {70, 1, COLOR_MAIN},
+     {33, 1, COLOR_MAIN},
+     {44, 4, COLOR_MAIN},
+     {69, 2, COLOR_MAIN},
      {65, 1, COLOR_MAIN},
      {60, 1, COLOR_MAIN},
      {55, 1, COLOR_MAIN},
@@ -104,28 +96,25 @@ const rgblight_segment_t PROGMEM arrow_lights[] = RGBLIGHT_LAYER_SEGMENTS(
 const rgblight_segment_t PROGMEM fn_lights[] = RGBLIGHT_LAYER_SEGMENTS(
      LHS_BACKLIGHT,
      RHS_BACKLIGHT,
-     {46, 4, COLOR_MAIN},
-     {56, 4, COLOR_MAIN},
-     {66, 4, COLOR_MAIN},
+     {11, 2, COLOR_MAIN},
+     {21, 2, COLOR_MAIN},
+     {31, 2, COLOR_MAIN},
+     {67, 2, COLOR_MAIN},
+     {57, 2, COLOR_MAIN},
+     {47, 2, COLOR_MAIN},
+     {33, 2, COLOR_MAIN},
+     {56, 1, COLOR_MAIN},
+     {49, 1, COLOR_MAIN},
+     {46, 1, COLOR_MAIN},
+     {8, 1, COLOR_WARN},
      {52, 1, COLOR_ALT}
-);
-
-const rgblight_segment_t PROGMEM meta_lights[] = RGBLIGHT_LAYER_SEGMENTS(
-     LHS_BACKLIGHT,
-     RHS_BACKLIGHT,
-     {43, 1, COLOR_ALT},
-     {46, 2, COLOR_MAIN},
-     {51, 1, COLOR_MAIN},
-     {54, 1, COLOR_MAIN},
-     {61, 1, COLOR_MAIN}
 );
 
 const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     main_lights,
     game_lights,
-    arrow_lights,
-    fn_lights,
-    meta_lights
+    nav_lights,
+    fn_lights
 );
 
 //layer_state_t default_layer_state_set_user(layer_state_t state) {
@@ -136,9 +125,8 @@ const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
 layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(0, layer_state_cmp(state, _QWERTY));
     rgblight_set_layer_state(1, layer_state_cmp(state, _GAME));
-    rgblight_set_layer_state(2, layer_state_cmp(state, _ARROWS));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _NAV));
     rgblight_set_layer_state(3, layer_state_cmp(state, _FN));
-    rgblight_set_layer_state(4, layer_state_cmp(state, _META));
     return state;
 }
 #endif
