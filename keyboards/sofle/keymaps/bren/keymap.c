@@ -139,7 +139,7 @@ void sym_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [SYM_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sym_shift_finished, sym_shift_reset)
+    [SYM_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, sym_shift_finished, sym_shift_reset, 125)
 };
 
 #ifdef RGBLIGHT_ENABLE
