@@ -11,6 +11,11 @@ for more options.
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_LIMIT_VAL 120
 
+#ifdef ENCODER_RESOLUTION
+#undef ENCODER_RESOLUTION
+#define ENCODER_RESOLUTION 4
+#endif
+
 /* Not working
  * Lookup in rgblight.c outputs garbage
 #define RGBLIGHT_LED_MAP { \
