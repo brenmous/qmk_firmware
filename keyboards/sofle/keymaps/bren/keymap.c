@@ -231,6 +231,18 @@ void keyboard_post_init_user(void) {
 #endif
 }
 
+bool alt_tab_active = false;
+uint16_t alt_tab_timer = 0;
+
+void matrix_scan_user(void) {
+    if (alt_tab_active) {
+        if (timer_elapsed(alt_tab_timer) > 800) {
+	    unregister_code(KC_LALT);
+	    alt_tab_active = false;
+	}
+    }
+}
+
 #ifdef OLED_ENABLE
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -252,38 +264,20 @@ void oled_task_user(void) {
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         if (clockwise) {
-            tap_code(KC_VOLD);
-        } else {
             tap_code(KC_VOLU);
-        }
-    } else if (index == 1) {
-	/* Nice to have, unfortunately layers have to read
-	 * from a global 'v' value, which means if we want
-	 * to be able to change their brightness we also
-	 * need to be happy having a default colour.
-	 * (Requires ...RETAIN_VAL set in config)
-	if (layer_state_is(_META)) {
-	    if (clockwise) {
-	        rgblight_decrease_val();
-	    } else {
-	        rgblight_increase_val();
-	    }
         } else {
-	*/
-            if (clockwise) {
-		register_code(KC_LSFT);
-		register_code(KC_TAB);
-		unregister_code(KC_TAB);
-		unregister_code(KC_LSFT);
-            } else {
-		register_code(KC_LSFT);
-		register_code(KC_LALT);
-		register_code(KC_TAB);
-		unregister_code(KC_TAB);
-		unregister_code(KC_LALT);
-		unregister_code(KC_LSFT);
-            }
-        //}
+            tap_code(KC_VOLD);
+        }
+    } else {
+	alt_tab_active = true;
+	alt_tab_timer = timer_read();
+	register_code(KC_LALT);
+        if (clockwise) {
+	    tap_code(KC_TAB);
+	} else {
+	    tap_code16(S(KC_TAB));
+	}
+	   
     }
     return true;
 }

@@ -5,15 +5,20 @@ see https://docs.qmk.fm/#/feature_split_keyboard?id=setting-handedness
 for more options.
 */
 
+#ifdef RGBLIGHT_ENABLE
 #define RGBLED_NUM 72
 #define RGB_DI_PIN D3
 #define RGBLED_SPLIT {36,36}
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_LIMIT_VAL 120
+#endif
 
+#ifdef ENCODER_ENABLE
+#define ENCODER_DIRECTION_FLIP
 #ifdef ENCODER_RESOLUTION
 #undef ENCODER_RESOLUTION
 #define ENCODER_RESOLUTION 4
+#endif
 #endif
 
 /* Not working
