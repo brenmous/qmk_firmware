@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_I,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_END, \
       KC_TAB,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOTE, \
       KC_LCTRL,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,       XXXXXXX,KC_N, KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_DELETE, \
-                    KC_LALT, KC_LGUI, KC_M, KC_LSFT, KC_SPC,                   KC_ENT, KC_BSPC, KC_FN, KC_PGDOWN, KC_PGUP \
+                    KC_LALT, KC_LGUI, KC_ARROW, KC_LSFT, KC_SPC,                   KC_ENT, KC_BSPC, KC_FN, KC_PGDOWN, KC_PGUP \
     ),
     [_SYM] = LAYOUT( \
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                               XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
@@ -55,8 +55,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_ARR] = LAYOUT( \
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX, XXXXXXX, \
+      XXXXXXX, XXXXXXX, XXXXXXX, KC_UP, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+      XXXXXXX, XXXXXXX, KC_RIGHT, KC_DOWN, KC_LEFT, XXXXXXX,                     KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX, XXXXXXX, \
       KC_LCTRL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
               KC_LALT, KC_LGUI, _______, KC_LSFT, KC_SPC,                       KC_ENT, KC_BSPC, XXXXXXX, KC_PGDOWN, KC_PGUP \
     ),
@@ -91,8 +91,11 @@ void both_ind(uint8_t h, uint8_t s, uint8_t v) {
 
 td_state_t cur_dance(qk_tap_dance_state_t *state) {
     if (state->count == 1) {
-        if (state->interrupted || !state->pressed) return TD_SINGLE_TAP;
-	else return TD_SINGLE_HOLD;
+        if (state->interrupted || !state->pressed) {
+	    return TD_SINGLE_TAP;
+	} else {
+	    return TD_SINGLE_HOLD;
+	}
     }
     return TD_UNKNOWN;
 }
@@ -139,7 +142,7 @@ void sym_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [SYM_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, sym_shift_finished, sym_shift_reset, 125)
+    [SYM_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sym_shift_finished, sym_shift_reset)
 };
 
 #ifdef RGBLIGHT_ENABLE
@@ -178,6 +181,9 @@ const rgblight_segment_t PROGMEM arr_lights[] = RGBLIGHT_LAYER_SEGMENTS(
      {65, 1, COLOR_MAIN},
      {60, 1, COLOR_MAIN},
      {55, 1, COLOR_MAIN},
+     {19, 1, COLOR_MAIN},
+     {23, 2, COLOR_MAIN},
+     {29, 1, COLOR_MAIN},
      {17, 1, COLOR_ALT}
 );
 
