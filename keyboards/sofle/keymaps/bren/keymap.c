@@ -33,10 +33,10 @@ void sym_shit_reset(qk_tap_dance_state_t *state, void *user_data);
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT( \
-      KC_GESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_INSERT, \
-      KC_HOME,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_END, \
+      KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_GRAVE, \
+      KC_DELETE,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_HOME, \
       KC_TAB,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOTE, \
-      KC_LCTRL,  KC_Z,   KC_X,    KC_C,   KC_V,    KC_B, KC_MUTE,       XXXXXXX,KC_N, KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_DELETE, \
+      KC_LCTRL,  KC_Z,   KC_X,    KC_C,   KC_V,    KC_B, KC_MUTE,       XXXXXXX,KC_N, KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_END, \
                       KC_LALT, KC_LGUI, KC_ARROW, TD(SYM_SHIFT), KC_SPC,      KC_ENT,  KC_BSPC, KC_FN, KC_PGDOWN, KC_PGUP \
     ),
     [_GAME] = LAYOUT( \
@@ -47,10 +47,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     KC_LALT, KC_LGUI, KC_ARROW, KC_LSFT, KC_SPC,                   KC_ENT, KC_BSPC, KC_FN, KC_PGDOWN, KC_PGUP \
     ),
     [_SYM] = LAYOUT( \
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                               XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+      XXXXXXX, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC,                               KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILDE, \
       XXXXXXX, XXXXXXX, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX,                              XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-      XXXXXXX, KC_UNDS, KC_LBRC, KC_RBRC, KC_EQUAL, KC_PLUS,                              XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-      KC_LCTRL, KC_MINUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_BSLS, XXXXXXX,             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+      XXXXXXX, KC_UNDS, KC_LBRC, KC_RBRC, KC_EQUAL, KC_PLUS,                              XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_COLON, KC_DQUO,\
+      KC_LCTRL, KC_MINUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_BSLS, XXXXXXX,             XXXXXXX, XXXXXXX, XXXXXXX, KC_LABK, KC_RABK, KC_QUES, XXXXXXX, \
       	     KC_LALT, KC_LGUI, XXXXXXX, _______, KC_SPC,                            KC_ENT, KC_BSPC, XXXXXXX, KC_PGDOWN, KC_PGUP \
     ),
     [_ARR] = LAYOUT( \
