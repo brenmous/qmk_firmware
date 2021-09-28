@@ -48,9 +48,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_SYM] = LAYOUT( \
       XXXXXXX, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC,                               KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILDE, \
-      XXXXXXX, XXXXXXX, KC_LPRN, KC_RPRN, KC_GRAVE, KC_TILDE,                              XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PIPE,\
-      XXXXXXX, KC_UNDS, KC_LBRC, KC_RBRC, KC_EQUAL, KC_PLUS,                              XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_COLON, KC_DQUO,\
-      KC_LCTRL, KC_MINUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_BSLS, XXXXXXX,             XXXXXXX, XXXXXXX, XXXXXXX, KC_LABK, KC_RABK, KC_QUES, KC_RCTRL, \
+      XXXXXXX, XXXXXXX, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX,                              XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PIPE,\
+      KC_TILDE, KC_UNDS, KC_LBRC, KC_RBRC, KC_EQUAL, KC_PLUS,                              XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_COLON, KC_DQUO,\
+      KC_GRAVE, KC_MINUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_BSLS, XXXXXXX,             XXXXXXX, XXXXXXX, XXXXXXX, KC_LABK, KC_RABK, KC_QUES, KC_RCTRL, \
       	     KC_LGUI, KC_LALT, XXXXXXX, _______, KC_SPC,                            KC_ENT, KC_BSPC, XXXXXXX, KC_RALT, KC_RGUI \
     ),
     [_NAV] = LAYOUT( \
@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 #ifdef RGBLIGHT_ENABLE
-#define COLOR_MAIN 173, 255, 128 //midnight blue
+#define COLOR_MAIN 171, 250, 255 //midnight blue
 #define COLOR_ALT 11, 176, 255 // coral pink
 #define COLOR_WARN 14, 255, 255 // orange
 #define COLOR_BACKLIGHT 11, 176, 255
@@ -142,7 +142,7 @@ void sym_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [SYM_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sym_shift_finished, sym_shift_reset)
+    [SYM_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, sym_shift_finished, sym_shift_reset, 110)
 };
 
 #ifdef RGBLIGHT_ENABLE
