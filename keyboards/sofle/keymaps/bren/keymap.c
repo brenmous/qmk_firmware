@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NAV] = LAYOUT( \
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
       XXXXXXX, XXXXXXX, XXXXXXX, KC_UP, XXXXXXX, XXXXXXX,                     KC_HOME, KC_PGDOWN, KC_PGUP, KC_END, XXXXXXX, XXXXXXX, \
-      XXXXXXX, XXXXXXX, KC_RIGHT, KC_DOWN, KC_LEFT, XXXXXXX,                     KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX, XXXXXXX, \
+      XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX,                     KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX, XXXXXXX, \
       KC_LCTRL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RCTRL, \
               KC_LGUI, KC_LALT, _______, KC_LSFT, KC_SPC,                       KC_ENT, KC_BSPC, XXXXXXX, KC_RALT, KC_RGUI \
     ),
@@ -142,7 +142,7 @@ void sym_shift_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [SYM_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, sym_shift_finished, sym_shift_reset, 110)
+    [SYM_SHIFT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sym_shift_finished, sym_shift_reset)
 };
 
 #ifdef RGBLIGHT_ENABLE
