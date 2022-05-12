@@ -17,29 +17,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LBRC,  KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_RBRC  , \
       KC_TAB,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOTE, \
       KC_LCTRL,  KC_Z,   KC_X,    KC_C,   KC_V,    KC_B, KC_MUTE,       XXXXXXX,KC_N, KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RCTRL, \
-                      KC_LGUI, KC_LALT, KC_NAV, KC_LSFT, KC_SPC,      KC_ENT,  KC_BSPC, KC_FN, KC_RALT, KC_RGUI \
+                      KC_LGUI, KC_LALT, KC_NAV, KC_LSFT, KC_ENT,      KC_SPC,  KC_BSPC, KC_FN, KC_RALT, KC_RGUI \
     ),
     [_NAV] = LAYOUT( \
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, KC_UP, XXXXXXX, XXXXXXX, XXXXXXX, \
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, XXXXXXX, \
       KC_LCTRL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RCTRL, \
-              KC_LGUI, KC_LALT, _______, KC_LSFT, KC_SPC,                       KC_ENT, KC_BSPC, XXXXXXX, KC_RALT, KC_RGUI \
+              KC_LGUI, KC_LALT, _______, KC_LSFT, KC_ENT,                       KC_SPC, KC_BSPC, XXXXXXX, KC_RALT, KC_RGUI \
     ),
     [_FN] = LAYOUT( \
       KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,                                 KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, \
       XXXXXXX, XXXXXXX, XXXXXXX, KC_EQUAL, XXXXXXX, RGB_TOG,                    XXXXXXX, KC_UNDS, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, \
       XXXXXXX, KC_PLUS, XXXXXXX, KC_MINUS, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
       KC_LCTRL, XXXXXXX, XXXXXXX, XXXXXXX, KC_PIPE, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSLS, KC_RCTRL, \
-              KC_LGUI, KC_LALT, XXXXXXX, KC_LSFT, KC_SPC,                       KC_ENT, KC_BSPC, _______, KC_RALT, KC_RGUI \
+              KC_LGUI, KC_LALT, XXXXXXX, KC_LSFT, KC_ENT,                       KC_SPC, KC_BSPC, _______, KC_RALT, KC_RGUI \
     )
 };
 
 #ifdef RGBLIGHT_ENABLE
-#define COLOR_MAIN 171, 250, 255 //midnight blue
-#define COLOR_ALT 11, 176, 255 // coral pink
-#define COLOR_WARN 14, 255, 255 // orange
-#define COLOR_BACKLIGHT 85, 250, 255
+#define COLOR_GREEN 85, 250, 255
+#define COLOR_PINK 222, 250, 255
+#define COLOR_ORANGE 14, 255, 255
+#define COLOR_BLUE 171, 250, 255
 
 void lhs_ind(uint8_t h, uint8_t s, uint8_t v) {
     rgblight_sethsv_at(h, s, v, 0);
@@ -69,45 +69,42 @@ extern rgblight_config_t rgblight_config;
 	             Back lights
        , 1, 2, 3, 4, 5, 6, 42, 41, 40, 39, 38, 37 \
 */
-#define LHS_BACKLIGHT {1, 6, COLOR_BACKLIGHT}
-#define RHS_BACKLIGHT {37, 6, COLOR_BACKLIGHT}
+#define LHS_BACKLIGHT {1, 6, COLOR_GREEN}
+#define RHS_BACKLIGHT {37, 6, COLOR_GREEN}
 const rgblight_segment_t PROGMEM main_lights[] = RGBLIGHT_LAYER_SEGMENTS(
      LHS_BACKLIGHT,
      RHS_BACKLIGHT,
-     {7, 29, COLOR_MAIN},
-     {43, 29, COLOR_MAIN}
+     {7, 29, COLOR_GREEN},
+     {43, 29, COLOR_GREEN}
 );
 
 const rgblight_segment_t PROGMEM arr_lights[] = RGBLIGHT_LAYER_SEGMENTS(
-     {69, 1, COLOR_MAIN},
-     {66, 1, COLOR_MAIN},
-     {59, 1, COLOR_MAIN},
-     {56, 1, COLOR_MAIN},
-     {70, 1, COLOR_MAIN},
-     {65, 1, COLOR_MAIN},
-     {60, 1, COLOR_MAIN},
-     {55, 1, COLOR_MAIN},
-     {19, 1, COLOR_MAIN},
-     {23, 2, COLOR_MAIN},
-     {29, 1, COLOR_MAIN},
-     {17, 1, COLOR_ALT}
+     LHS_BACKLIGHT,
+     RHS_BACKLIGHT,
+     {59, 2, COLOR_PINK},
+     {65, 1, COLOR_PINK},
+     {55, 1, COLOR_PINK},
+     {17, 1, COLOR_PINK}
 );
 
 const rgblight_segment_t PROGMEM fn_lights[] = RGBLIGHT_LAYER_SEGMENTS(
      LHS_BACKLIGHT,
      RHS_BACKLIGHT,
-     {11, 2, COLOR_MAIN},
-     {21, 2, COLOR_MAIN},
-     {31, 2, COLOR_MAIN},
-     {67, 2, COLOR_MAIN},
-     {57, 2, COLOR_MAIN},
-     {47, 2, COLOR_MAIN},
-     {33, 2, COLOR_MAIN},
-     {56, 1, COLOR_MAIN},
-     {49, 1, COLOR_MAIN},
-     {46, 1, COLOR_MAIN},
-     {13, 1, COLOR_WARN},
-     {53, 1, COLOR_ALT}
+     {11, 2, COLOR_BLUE},
+     {21, 2, COLOR_BLUE},
+     {31, 2, COLOR_BLUE},
+     {67, 2, COLOR_BLUE},
+     {57, 2, COLOR_BLUE},
+     {47, 2, COLOR_BLUE},
+     {14, 1, COLOR_ORANAGE},
+     {19, 2, COLOR_ORANGE},
+     {28, 1, COLOR_ORANGE},
+     {66, 1, COLOR_ORANGE},
+     {46, 1, COLOR_ORANGE},
+     {49, 1, COLOR_ORANGE},
+     {56, 1, COLOR_ORANGE},
+     {51, 1, COLOR_ORANGE},
+     {53, 1, COLOR_ORANGE}
 );
 
 const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
